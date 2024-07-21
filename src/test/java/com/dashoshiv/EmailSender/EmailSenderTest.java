@@ -3,6 +3,7 @@ package com.dashoshiv.EmailSender;
 import com.dashoshiv.EmailSender.services.EmailService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
@@ -16,11 +17,14 @@ public class EmailSenderTest {
     @Autowired
     private EmailService emailService;
 
+    @Value("${mail.testingmailid}")
+    private String recipient;
+
     @Test
     void emailSendTest(){
 
         System.out.println("Sending Email");
-        emailService.sendEmail("shivansh.dashore2003@gmail.com","Demo second email from SpringBoot","This email is sent using JavaMailSender");
+        emailService.sendEmail(recipient,"Demo second email from SpringBoot","This email is sent using JavaMailSender");
     }
 
     @Test
@@ -29,12 +33,12 @@ public class EmailSenderTest {
                "<h1 style='color: red;border: 1px dashed red;'>Hi There</h1>"
                 + "<h2 style='color: blue;'>Welcome to learning with Durgesh</h2>";
 
-        emailService.sendEmailWithHtml("shivansh.dashore2003@gmail.com","Demo Third email from SpringBoot",htmlContent);
+        emailService.sendEmailWithHtml(recipient,"Demo Third email from SpringBoot",htmlContent);
     }
     @Test
     void sendEmailWithFile(){
         emailService.sendEmailWithFile(
-                "shivansh.dashore2003@gmail.com",
+                recipient,
                 "Demo fourth email from SpringBoot",
                 "This email is sent using JavaMailSender",
                 new File("D:\\Springboot_learn\\EmailSender\\EmailSender\\src\\main\\resources\\static\\myfiles\\Transcript.jpeg")
@@ -47,7 +51,7 @@ public class EmailSenderTest {
         try {
             InputStream is = new FileInputStream(file);
             emailService.sendEmailWithFile(
-                    "shivansh.dashore2003@gmail.com",
+                    recipient,
                     "Demo fifth email from SpringBoot",
                     "This email is sent using JavaMailSender",
                     is
