@@ -80,7 +80,7 @@ public class EmailServiceImpl implements EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
             helper.setFrom(myEmailid);
             helper.setTo(to);
-            helper.setText(message);
+            helper.setText(message,true);
             helper.setSubject(subject);
             FileSystemResource fileSystemResource = new FileSystemResource(file);
             helper.addAttachment(fileSystemResource.getFilename(),file);
@@ -99,7 +99,7 @@ public class EmailServiceImpl implements EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
             helper.setFrom(myEmailid);
             helper.setTo(to);
-            helper.setText(message);
+            helper.setText(message,true);
             helper.setSubject(subject);
 
 //            File file = new File("test.png");
