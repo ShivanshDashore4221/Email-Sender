@@ -46,9 +46,9 @@ function EmailSender() {
 
     return (
         <div className="w-full min-h-screen flex justify-center items-center">
-            <div className="email_card bg-white md:w-1/3 w-full mx-4 md:mx-0 -mt-10 p-4 rounded-lg border shadow">
-            <h1 className="text-gray-900 text-3xl">Email Sender</h1>
-            <p className="text-gray-800">Send email to your favourite person with your own app</p>
+            <div className="email_card bg-white md:w-1/3 w-full mx-4 md:mx-0 dark:bg-gray-700 dark:text-white dark:border-none -mt-10 p-4 rounded-lg border shadow">
+            <h1 className="text-gray-900 dark:text-gray-200 text-3xl">Email Sender</h1>
+            <p className="text-gray-800 dark:text-gray-300 mt-2">Send email to your favourite person with your own app</p>
             <form action="" onSubmit={handleSubmit}>
                 {/* to */}
                 <div className="input_field mt-4">
@@ -58,7 +58,7 @@ function EmailSender() {
             <input 
             value={emailData.to}
             onChange={(event)=>handleFieldChange(event,"to")}
-            type="text" id="large-input" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type="text" id="large-input" className="block w-full p-4 text-gray-900 border focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-lg bg-gray-50 text-base dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder='Enter here' />
                 </div>
 
@@ -81,7 +81,7 @@ function EmailSender() {
     </label>
 <textarea 
 value={emailData.message}
-onChange={(event)=>handleFieldChange(event,"message")}id="message" rows="8" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your message here..."></textarea>
+onChange={(event)=>handleFieldChange(event,"message")} id="message" rows="8" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your message here..."></textarea>
                 </div>
                 {/* Loader */}
 
@@ -100,7 +100,7 @@ onChange={(event)=>handleFieldChange(event,"message")}id="message" rows="8" clas
                 <div className="button_container flex justify-center gap-3 mt-4">
                     {/* disabled={sending} done so that button is disabled while email is being sent */}
                     <button disabled={sending} type='submit' className='hover:bg-blue-800 text-white bg-blue-600 px-3 py-2 rounded'>Send Email</button>
-                    <button type='reset' disabled={sending}  className='hover:bg-red-700 text-white bg-red-500 px-3 py-2 rounded'>Clear</button>
+                    <button disabled={sending} type='reset' className='hover:bg-red-700 text-white bg-red-500 px-3 py-2 rounded'>Clear</button>
                 </div>
             </form>
             </div>
