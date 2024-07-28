@@ -61,3 +61,4 @@ build/
 
 # Application properties
 application.properties
+.env

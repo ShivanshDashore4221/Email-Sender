@@ -7,7 +7,7 @@ import { Editor } from '@tinymce/tinymce-react';
 function EmailSender() {
     // rich text editor work
     const editorRef = useRef(null);
-
+    const apiKey = import.meta.env.VITE_API_KEY;
     const [emailData, setEmailData] = useState({
         to: "",
         subject: "",
@@ -34,12 +34,12 @@ function EmailSender() {
             await sendEmail(emailData);
             toast.success("Email Sent Successfully!");
             toast.success("Send Another One");
+            editorRef.current.setContent("");
             setEmailData({
                 to: "",
                 subject: "",
                 message: "",
             });
-            editorRef.current.setContent("");
         } catch (error) {
             console.log(error);
             toast.error("Email not sent");
@@ -91,7 +91,7 @@ value={emailData.message}
 onChange={(event)=>handleFieldChange(event,"message")} id="message" rows="8" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your message here..."></textarea> */}
 
 <Editor
-       apiKey='vs81kkxl35h5guzgfvjpsal43ytct3zq4ny68qsfdkyysu6k'
+       apiKey={apiKey}
         onInit={(_evt, editor) => editorRef.current = editor}
         onEditorChange={(event) => {
             setEmailData({...emailData, message: editorRef.current.getContent(),
